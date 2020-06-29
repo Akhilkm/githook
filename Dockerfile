@@ -2,7 +2,7 @@
 FROM centos:7
 
 # Maintained by
-Maintainer Amal K Raj
+MAINTAINER Amal K Raj
 
 # Container working directory
 WORKDIR /opt/
