@@ -37,8 +37,7 @@ RUN wget https://mirrors.estointernet.in/apache//httpd/httpd-$APACHE_VERION.tar.
 # Changing to apache home folder
 WORKDIR /opt/apache2
 
-# Install Php
-
+# Installing PHP
 RUN yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
     && yum -y install https://rpms.remirepo.net/enterprise/remi-release-7.rpm \
     && yum -y install yum-utils \
@@ -48,4 +47,4 @@ RUN yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.n
     && php --modules 
 
 # Entrypoint
-CMD ["apachectl -D", "FOREGROUND"]
+CMD ["./bin/apachectl -D", "FOREGROUND"]
