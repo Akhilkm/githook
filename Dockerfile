@@ -37,14 +37,17 @@ RUN wget https://mirrors.estointernet.in/apache//httpd/httpd-$APACHE_VERION.tar.
 # Changing to apache home folder
 WORKDIR /opt/apache2
 
-# Installing PHP
+# Install Php
+
 RUN yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
     && yum -y install https://rpms.remirepo.net/enterprise/remi-release-7.rpm \
     && yum -y install yum-utils \
-    && yum-config-manager --enable remi-php74 \
+    && yum-config-manager --enable remi-php72 \
     && yum update -y \
-    && yum install -y php php-pdo php-mysqlnd php-opcache php-xml php-mcrypt php-gd php-devel php-mysql php-intl php-mbstring php-json php-iconv \
+    && yum install -y php php-pdo php-mysqlnd php-opcache php-xml php-mcrypt php-gd php-devel php-intl php-mbstring php-json php-iconv \
     && php --modules 
 
+RUN php -version
+
 # Entrypoint
-CMD ["./bin/apachectl -D", "FOREGROUND"]
+CMD ["apachectl -D", "FOREGROUND"]
