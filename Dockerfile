@@ -50,4 +50,4 @@ RUN yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.n
 RUN php -version
 
 # Entrypoint
-CMD ["/opt/apache2/bin/apachectl -D", "FOREGROUND"]
+CMD ["/opt/apache2/bin/apachectl", "-D", "FOREGROUND"]
